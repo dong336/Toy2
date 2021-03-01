@@ -1,0 +1,12 @@
+.panel-title a{
+	all:unset;
+}
+.panel-title a h1{
+	color:white;
+}
+.panel-title a:hover{
+	cursor: pointer;
+}
+.panel-body p{
+	text-align : left;
+}

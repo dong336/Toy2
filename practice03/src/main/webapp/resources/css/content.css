@@ -1,0 +1,18 @@
+.home:hover, .drive:hover, .mp:hover, .canvas:hover{
+	cursor:pointer;
+}
+body {
+  padding-top: 70px;
+}
+.starter-template {
+  padding: 40px 10px;
+  text-align: center;
+}
+.box__1{
+	border-radius:2px;
+	background-color: #9b59b6;
+	color:white;
+}
+footer{
+	font-family: 'Times New Roman', Times, serif;
+}
