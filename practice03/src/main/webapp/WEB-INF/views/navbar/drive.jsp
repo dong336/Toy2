@@ -20,7 +20,12 @@
 <div class="row placeholders">
 	<div id="grid">
 		<!-- ajax load data -->
-	</div>	
+	</div>
+	<hr>	
+	<div>
+	    <button id="btnClear">clear</button>
+	    <button id="btnSearch">view</button>
+	</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
@@ -43,20 +48,20 @@ $(function () {
 	      {
 	        header: '수정일자',
 	        name: 'modifyDate',
-		      width: 200,
-		      align: 'center'
+		    width: 200,
+		    align: 'center'
 	      },
 	      {
-		      header: '유형',
-		      name: 'type',
-		      width: 150,
-		      align: 'center'
-		    },
+		    header: '유형',
+		    name: 'type',
+		    width: 150,
+		    align: 'center'
+		  },
 	      {
 	        header: '파일크기',
 	        name: 'capacity',
-		      width: 150,
-			  align: 'right'
+		    width: 150,
+			align: 'right'
 	      }	        
 	    ]
 	});
@@ -64,7 +69,7 @@ $(function () {
  	$("#btnClear").click(function(){
 	    grid.clear();
 	});
-	  
+	
 	$("#btnSearch").click(function(){
 	    $.ajax({
 		    url : '/grid/data', 
@@ -74,20 +79,21 @@ $(function () {
 		    error : function(){
 		        alert('error');
 		    },
-		    success : function(data){
-	    		console.dir(data.dataList);
-	    		grid.resetData(eval(data.dataList));
+		    success : function(result){
+	    		console.dir(result.dataList);
+	    		grid.resetData(eval(result.dataList));
 			} 
 	    });
 	});  
 	
-	grid.on('dblclick', function(e) {
-	    console.log('modifyDate dblclick!', e);
-	    var date = grid.getRow(e.rowKey).modifyDate;
-	    if(date == null)
+	grid.on('click', function(e) {
+	    console.log('click!', e);
+	    var size = grid.getRow(e.rowKey).capacity;
+	    if(size == null)
 	    	alert('디렉토리입니다.');
 	    else {
-	    	location.href = "getFileDownload?FILE_NAME=" + grid.getRow(e.rowKey).fileName;   
+	    	alert('파일입니다.');
+ 	    	location.href = "/drive/getFileDownload?fileName=" + grid.getRow(e.rowKey).fileName;   
 	    }
 	});
 	
@@ -132,7 +138,9 @@ $(function () {
                 contentType: false,
                 success: function(res) {
                     alert("업로드가 완료되었습니다.");
-                    F_FileMultiUpload_Callback(res.files);
+                    console.log(res.files);
+/*                     grid.resetData(eval(res.files)); */
+                    F_FileMultiUpload_Callback(res.files); 
                 },
                 error: function(res) {
                     alert("업로드 중에 에러가 발생했습니다. 파일은 10M를 넘을 수 없습니다.");
@@ -141,13 +149,14 @@ $(function () {
              });
          }
     }
-    // 파일 멀티 업로드 Callback
+     // 파일 멀티 업로드 Callback
     function F_FileMultiUpload_Callback(files) {
         for(var i=0; i < files.length; i++) {
             var file = files[i];
+
             $("#downloadzone").append("<a class='box__1' href='/drive/getFileDownload?filename=" + files[i] + "' >"+ files[i] +"</a><br>");
         }
-    }
+    } 
     function fnAlert(e, msg) {
         e.stopPropagation();
         alert(msg);

@@ -27,8 +27,9 @@ public class DriveController {
     public ModelAndView getFileDownload(@RequestParam Map<String, String> map) throws Exception {
 		System.out.println("==getFileDown==");
 		
-		String path = "c:" + File.separator + "NAS" + File.separator + map.get("filename");
-        File downloadFile = new File(path);
+		String path = "c:" + File.separator + "NAS" + File.separator + map.get("fileName");
+        System.out.println(map.get("fileName"));
+		File downloadFile = new File(path);
         Map<String, File> data = new HashMap<>();
         
         data.put("model", downloadFile);  // 실제 서버에 저장된 파일정보
