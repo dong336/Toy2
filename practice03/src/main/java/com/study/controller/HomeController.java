@@ -5,6 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
+	@GetMapping("favicon.ico")
+	public String getFavicon() {
+		return null;
+	}
+	
 	@GetMapping("/")
 	public String getHome() {
 		System.out.println("==Home==");

@@ -58,7 +58,7 @@ public class FileService {
 	
 	private String getCapacityFormat(long fileSize) {
 		
-		if(fileSize > 1000000) return "1GB 이상";
+		if(fileSize > 10000000) return "10MB 이상";
 		
 		DecimalFormat df = new DecimalFormat("###,###");
 		String capacity = df.format(fileSize) + "B";
