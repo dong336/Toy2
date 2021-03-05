@@ -22,7 +22,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">x</span>
                     </button>
-                    <h4 class="modal-title" id="myLargeModalLabel">Drag & Drop here</h4>
+                    <h4 class="modal-title" id="myLargeModalLabel">Drag & Drop only file here</h4>
                     <!-- <div class="modal-body">
                     </div> -->
                 </div>    
@@ -30,18 +30,9 @@
         </div>
     </div>
 </div>
-
-<!-- <div class="row placeholders">
-    <div id="dropzone" class="box__1">
-        <h1>Drag & Drop Files Here</h1>
-    </div>
-    <div id="downloadzone"></div>
-</div>  -->
-
 <div class="row placeholders">
 	<div id="downloadzone"></div>
 </div>
-
 <div class="row placeholders">
 	<div id="grid">
 		<!-- ajax load data -->

@@ -69,11 +69,45 @@ $(function () {
  	    	location.href = "/drive/getFileDownload?fileName=" + grid.getRow(e.rowKey).fileName;   
 	    }
 	});
+
+    grid.on('mouseover', function(e){
+        var td1 = grid.getElement(e.rowKey, 'fileName');
+        var td2 = grid.getElement(e.rowKey, 'modifyDate');
+        var td3 = grid.getElement(e.rowKey, 'type');
+        var td4 = grid.getElement(e.rowKey, 'capacity');
+        
+        td1.style.backgroundColor = 'darkorchid';
+        td2.style.backgroundColor = 'darkorchid';
+        td3.style.backgroundColor = 'darkorchid';
+        td4.style.backgroundColor = 'darkorchid';
+
+        td1.style.color = 'white';
+        td2.style.color = 'white';
+        td3.style.color = 'white';
+        td4.style.color = 'white';
+    });
 	
+    grid.on('mouseout', function(e){
+        var td1 = grid.getElement(e.rowKey, 'fileName');
+        var td2 = grid.getElement(e.rowKey, 'modifyDate');
+        var td3 = grid.getElement(e.rowKey, 'type');
+        var td4 = grid.getElement(e.rowKey, 'capacity');
+        
+        td1.style.backgroundColor = '#f4f4f4';
+        td2.style.backgroundColor = '#f4f4f4';
+        td3.style.backgroundColor = '#f4f4f4';
+        td4.style.backgroundColor = '#f4f4f4';
+
+        td1.style.color = 'black';
+        td2.style.color = 'black';
+        td3.style.color = 'black';
+        td4.style.color = 'black';
+    });
+
     var obj = $("#myLargeModalLabel");
     obj.on('dragenter', function (e) {
-         e.stopPropagation();  //상위 노드로 가는 이벤트를 멈춘다.
-         e.preventDefault();  //현재 객체에 있는 모든 실행요소를 멈춘다.
+        e.stopPropagation();  //상위 노드로 가는 이벤트를 멈춘다.
+        e.preventDefault();  //현재 객체에 있는 모든 실행요소를 멈춘다.
     });
     obj.on('dragleave', function (e) {
          e.stopPropagation();

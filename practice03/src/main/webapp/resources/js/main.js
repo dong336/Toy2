@@ -1,6 +1,9 @@
 window.onload = function(){
+	
+	/* 반응형 nav panel */
 	$("#body__container").load("main");
-	$(".home").css({"background-color":"#9b59b6"});
+	$(".home").css({"background-color":"darkorchid"});
+	$(".home a").css({"color":"white"});
 	
 	$(".home").on("click", function(){
 		$("#body__container").empty();
@@ -27,7 +30,9 @@ window.onload = function(){
   });
 
   function pushed(panel){
-    $(".home, .drive, .mp, .canvas").css({"background-color":"#101010"});
-    $(panel).css({"background-color":"#9b59b6"});
-  };
+		$(".home, .drive, .mp, .canvas").css({"background-color":"#101010"});
+		$(".home a, .drive a, .mp a, .canvas a").css({"color":"#9d9d9d"});
+		$(panel).css({"background-color":"darkorchid"});
+		$(panel + " a").css({"color":"white"});
+	};
 };

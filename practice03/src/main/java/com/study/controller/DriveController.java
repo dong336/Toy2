@@ -88,7 +88,7 @@ public class DriveController {
                 	
                 	DecimalFormat df = new DecimalFormat("###,###");
                 	if(file.length() > 1000000) {
-                		System.err.println("upload size 1MB exceed");
+                		System.err.println("**Error : Upload size 1MB exceed!");
                 		return null;
                 	}	
             		
@@ -96,8 +96,9 @@ public class DriveController {
             		vo.setCapacity(capacity);
                 }
                 else {
-                	vo.setType("Folder");
-                	vo.setCapacity(null);
+                	// TODO : folder upload
+                	System.out.println("**Error : Folder can't uploaded");
+                	return null;
                 }
         	
                 Date modifyDate = new Date(file.lastModified());
