@@ -29,24 +29,62 @@
          <a class="navbar-brand" href="#">Things</a>
        </div>
        <div id="navbar" class="collapse navbar-collapse">
-         <ul class="nav navbar-nav">
-           <li class="home"><a>Home</a></li>
-           <li class="drive"><a>My drive</a></li>
-           <li class="mp"><a>Music player</a></li>
-           <li class="canvas"><a>Paint canvas</a></li>
-         </ul>
+	       <ul class="nav navbar-nav">
+	         <li class="home"><a>Home</a></li>
+	         <li class="drive"><a>My drive</a></li>
+	         <li class="mp"><a>Music player</a></li>
+	         <li class="canvas"><a>Paint canvas</a></li>
+	       </ul>
+	       <form class="navbar-form navbar-right" method="get" action="/login/form">
+		       <button type="submit" class="btn btn-primary">Login</button>
+           </form>
        </div><!--/.nav-collapse -->
-  </div>
+  	</div>
 </nav>
 
 <div class="container-fluid">
-	<div class="row">
+	<div class="row placeholder">
 		<div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Item1<span class="sr-only">(current)</span></a></li>
             <li><a href="#">Item2</a></li>
             <li><a href="#">Item3</a></li>
             <li><a href="#">Item4</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Board1</a></li>
+            <li><a href="">Board2</a></li>
+            <li><a href="">Board3</a></li>
+            <li><a href="">Board4</a></li>
+            <li><a href="">Board5</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Board1</a></li>
+            <li><a href="">Board2</a></li>
+            <li><a href="">Board3</a></li>
+            <li><a href="">Board4</a></li>
+            <li><a href="">Board5</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Board1</a></li>
+            <li><a href="">Board2</a></li>
+            <li><a href="">Board3</a></li>
+            <li><a href="">Board4</a></li>
+            <li><a href="">Board5</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Board1</a></li>
+            <li><a href="">Board2</a></li>
+            <li><a href="">Board3</a></li>
+            <li><a href="">Board4</a></li>
+            <li><a href="">Board5</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Board1</a></li>
+            <li><a href="">Board2</a></li>
+            <li><a href="">Board3</a></li>
+            <li><a href="">Board4</a></li>
+            <li><a href="">Board5</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="">Board1</a></li>
