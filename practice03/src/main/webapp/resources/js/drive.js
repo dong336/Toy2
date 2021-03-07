@@ -120,15 +120,17 @@ $(function () {
     obj.on('drop', function (e) {
         e.preventDefault();
         var files = e.originalEvent.dataTransfer.files;
-        if(files.length < 1)
-            return;
+        var size = files[0].size;
 
-        for(var i = 0; i < files.length; i++) {
-            var file = files[i];
+        console.dir(files);
+
+        if(size == 0 || size == 4096){
+            alert("폴더입니다.")
         }
-        
-        F_FileMultiUpload(files, obj);
-        
+        else{
+            F_FileMultiUpload(files, obj);
+        }
+        //upload(e, obj);
     });
 
     //파일 멀티 업로드
@@ -150,12 +152,12 @@ $(function () {
                     alert("업로드가 완료되었습니다.");
                     
                     //F_FileMultiUpload_Callback(res.files); 
-                    console.log(res);
+                    //console.log(res);
                     grid.appendRows(res);
                 },
                 error: function(res) {
                     alert("업로드 중에 에러가 발생했습니다. 파일은 1M를 넘을 수 없습니다.");
-                    console.dir(res);
+                    //console.dir(res);
                 }
              });
          }
