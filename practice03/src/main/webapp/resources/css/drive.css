@@ -1,3 +1,6 @@
 .tui-grid-table tbody tr td:hover{
     cursor: pointer;
-} 
+}
+.modal-content{
+    height: 200px;
+}

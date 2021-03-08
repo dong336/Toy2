@@ -56,6 +56,7 @@ public class DriveController {
         for(int i = 0; i < files.size(); i++) {
         	MultipartFile mpf = files.get(i);
         	result.add(mpf.getOriginalFilename());
+        	System.out.println(mpf.getOriginalFilename());
         	String sPath = "";
         	FileVO vo = new FileVO();
         	try {

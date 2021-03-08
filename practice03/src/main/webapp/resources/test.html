@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type="file"] {
+        width: 98%;
+        height: 180px;
+        }
+
+        label[for="file"] {
+            width: 98%;
+        height: 180px;
+        }
+
+        .area {
+        display:block;
+        border: 5px dotted #ccc;
+        text-align: center;
+        }
+
+        .area:after {
+        display: block;
+        border:none;
+        white-space: pre;
+        /*content: "Drop your files here!\aOr click to select files";*/
+        position: relative;
+        left: 0%;
+        top: -75px;
+        text-align:center;
+        }
+
+        .drag {
+        border: 5px dotted green;
+        background-color: yellow;
+        }
+
+        #result ul {
+        list-style: none;
+        margin-top: 20px;
+        }
+
+        #result ul li {
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <label id="dropArea" class="area">
+        <input id="file" type="file" allowdirs directory webkitdirectory/>
+    </label>
+    <output id="result">
+    <ul></ul>
+    </output>    
+    <script>
+        var dropArea = document.getElementById("dropArea");
+        var output = document.getElementById("result");
+        var ul = output.querySelector("ul");
+
+        function dragHandler(event) {
+            event.stopPropagation();
+            event.preventDefault();
+
+            dropArea.className = "area drag";
+        }
+
+        function filesDroped(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            dropArea.className = "area";
+
+            var uploadFile = function(file, path) {
+                // handle file uploading
+                console.log(file, path);
+                var filesInfo = `<li>
+                                    Name: ${file.name}</br> 
+                                    Size: ${file.size} bytes</br> 
+                                    Type: ${file.type}</br> 
+                                    Modified Date: ${file.lastModifiedDate}
+                                </li>`;
+                ul.innerHTML += `${filesInfo}`;
+            };
+
+            var iterateFilesAndDirs = function(filesAndDirs, path) {
+                for (var i = 0; i < filesAndDirs.length; i++) {
+                if (typeof filesAndDirs[i].getFilesAndDirectories === 'function') {
+                    var path = filesAndDirs[i].path;
+
+                    // this recursion enables deep traversal of directories
+                    filesAndDirs[i].getFilesAndDirectories()
+                    .then(function(subFilesAndDirs) {
+                        // iterate through files and directories in sub-directory
+                        iterateFilesAndDirs(subFilesAndDirs, path);
+                    });
+                } else {
+                    uploadFile(filesAndDirs[i], path);
+                }
+                }
+            };
+            if ("getFilesAndDirectories" in event.target) {
+                event.target.getFilesAndDirectories()
+                .then(function(filesAndDirs) {
+                    // if directory
+                    var dir = filesAndDirs;
+                    if (dir[0] && dir[0].constructor.name === "Directory") {
+                    
+                    console.log(dir);
+                    var directoryInfo = `<li>
+                                    Directory Name: ${dir[0].name}</br> 
+                                    Path: ${dir[0].path}
+                                </li>`;
+                    ul.innerHTML += `${directoryInfo}`;
+                    alert("isDirectory:true");
+                    }
+                    iterateFilesAndDirs(dir, "/");
+                })
+
+            } else {
+                // do webkit stuff
+            }
+        }
+
+        dropArea.addEventListener("dragover", dragHandler);
+        dropArea.addEventListener("change", filesDroped);
+      </script>
+</body>
+</html>

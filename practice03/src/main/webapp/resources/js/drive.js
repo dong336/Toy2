@@ -70,21 +70,24 @@ $(function () {
 	    }
 	});
 
+
     grid.on('mouseover', function(e){
         var td1 = grid.getElement(e.rowKey, 'fileName');
         var td2 = grid.getElement(e.rowKey, 'modifyDate');
         var td3 = grid.getElement(e.rowKey, 'type');
         var td4 = grid.getElement(e.rowKey, 'capacity');
         
-        td1.style.backgroundColor = 'darkorchid';
-        td2.style.backgroundColor = 'darkorchid';
-        td3.style.backgroundColor = 'darkorchid';
-        td4.style.backgroundColor = 'darkorchid';
-
-        td1.style.color = 'white';
-        td2.style.color = 'white';
-        td3.style.color = 'white';
-        td4.style.color = 'white';
+        if(td1 != null){
+            td1.style.backgroundColor = 'darkorchid';
+            td2.style.backgroundColor = 'darkorchid';
+            td3.style.backgroundColor = 'darkorchid';
+            td4.style.backgroundColor = 'darkorchid';
+            
+            td1.style.color = 'white';
+            td2.style.color = 'white';
+            td3.style.color = 'white';
+            td4.style.color = 'white';
+        }
     });
 	
     grid.on('mouseout', function(e){
@@ -93,15 +96,17 @@ $(function () {
         var td3 = grid.getElement(e.rowKey, 'type');
         var td4 = grid.getElement(e.rowKey, 'capacity');
         
-        td1.style.backgroundColor = '#f4f4f4';
-        td2.style.backgroundColor = '#f4f4f4';
-        td3.style.backgroundColor = '#f4f4f4';
-        td4.style.backgroundColor = '#f4f4f4';
-
-        td1.style.color = 'black';
-        td2.style.color = 'black';
-        td3.style.color = 'black';
-        td4.style.color = 'black';
+        if(td1 != null){
+            td1.style.backgroundColor = '#f4f4f4';
+            td2.style.backgroundColor = '#f4f4f4';
+            td3.style.backgroundColor = '#f4f4f4';
+            td4.style.backgroundColor = '#f4f4f4';
+            
+            td1.style.color = 'black';
+            td2.style.color = 'black';
+            td3.style.color = 'black';
+            td4.style.color = 'black';
+        }
     });
 
     var obj = $("#myLargeModalLabel");
@@ -120,30 +125,46 @@ $(function () {
     obj.on('drop', function (e) {
         e.preventDefault();
         var files = e.originalEvent.dataTransfer.files;
-        var size = files[0].size;
+        // var size = files[0].size;
 
-        console.dir(files);
+        // console.dir(files);
+        F_FileMultiUpload(files, obj);
 
-        if(size == 0 || size == 4096){
-            alert("폴더입니다.")
-        }
-        else{
-            F_FileMultiUpload(files, obj);
-        }
+        // if(size == 0 || size == 4096){
+        //     alert("폴더입니다.")
+        // }
+        // else{
+        //     F_FileMultiUpload(files, obj);
+        // }
         //upload(e, obj);
     });
 
+    function fileScan(file){
+        console.dir(file.name);
+        console.dir(file.size);
+    }
+
     //파일 멀티 업로드
     function F_FileMultiUpload(files, obj) {
-         if(confirm(files.length + "개의 파일을 업로드 하시겠습니까?") ) {
-             var data = new FormData();
-             for (var i = 0; i < files.length; i++) {
+        if(confirm(files.length + "개의 파일을 업로드 하시겠습니까?") ) {
+            console.dir(files);
+            
+            var data = new FormData();
+            var url = '/drive/dndUpload';
+            
+            for (var i = 0; i < files.length; i++) {
                 data.append('files', files[i]);
-             }
-             var url = '/drive/dndUpload';
-             $.ajax({
+                fileScan(files[i]);
+            }
+               
+            var list = data.getAll('files');
+            console.log("** 데이터 리스트");
+            console.dir(list);
+
+            $.ajax({
                 url: url,
                 method: 'POST',
+                enctype: 'multipart/form-data',
                 data: data,
                 dataType: 'json',
                 processData: false,
@@ -151,16 +172,16 @@ $(function () {
                 success: function(res) {
                     alert("업로드가 완료되었습니다.");
                     
-                    //F_FileMultiUpload_Callback(res.files); 
-                    //console.log(res);
+                    // F_FileMultiUpload_Callback(res.files);
+                    // console.log(res);
                     grid.appendRows(res);
                 },
                 error: function(res) {
                     alert("업로드 중에 에러가 발생했습니다. 파일은 1M를 넘을 수 없습니다.");
-                    //console.dir(res);
+                    // console.dir(res);
                 }
-             });
-         }
+            });
+        }
     }
 
     // 파일 멀티 업로드 Callback
