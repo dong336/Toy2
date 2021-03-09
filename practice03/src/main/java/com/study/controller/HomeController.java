@@ -21,6 +21,11 @@ public class HomeController {
 		return "navbar/main";
 	}
 	
+	@GetMapping("board")
+	public String getBoard() {
+		return "navbar/boardList";
+	}
+	
 	@GetMapping("drive")
 	public String getDrive() {
 		System.out.println("==Drive==");

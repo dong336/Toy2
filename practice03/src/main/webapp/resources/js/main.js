@@ -10,7 +10,13 @@ window.onload = function(){
 		$("#body__container").load("main");
     	pushed(".home");
   });
-	
+
+	$(".board").on("click", function(){
+		$("#body__container").empty();
+		$("#body__container").load("board");
+		pushed(".board");
+	});
+
 	$(".drive").on("click", function(){
 		$("#body__container").empty();
 		$("#body__container").load("drive");
@@ -30,8 +36,8 @@ window.onload = function(){
   });
 
   function pushed(panel){
-		$(".home, .drive, .mp, .canvas").css({"background-color":"#101010"});
-		$(".home a, .drive a, .mp a, .canvas a").css({"color":"#9d9d9d"});
+		$(".home, .board, .drive, .mp, .canvas").css({"background-color":"#101010"});
+		$(".home a, .board a, .drive a, .mp a, .canvas a").css({"color":"#9d9d9d"});
 		$(panel).css({"background-color":"darkorchid"});
 		$(panel + " a").css({"color":"white"});
 	};

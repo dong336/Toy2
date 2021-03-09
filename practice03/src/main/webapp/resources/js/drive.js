@@ -130,19 +130,8 @@ $(function () {
         // console.dir(files);
         F_FileMultiUpload(files, obj);
 
-        // if(size == 0 || size == 4096){
-        //     alert("폴더입니다.")
-        // }
-        // else{
-        //     F_FileMultiUpload(files, obj);
-        // }
         //upload(e, obj);
     });
-
-    function fileScan(file){
-        console.dir(file.name);
-        console.dir(file.size);
-    }
 
     //파일 멀티 업로드
     function F_FileMultiUpload(files, obj) {
@@ -153,8 +142,13 @@ $(function () {
             var url = '/drive/dndUpload';
             
             for (var i = 0; i < files.length; i++) {
+                var size = files[i].size;
                 data.append('files', files[i]);
-                fileScan(files[i]);
+                
+                if(size == 0 || size == 4096){
+                    alert("폴더는 업로드할 수 없습니다..");
+                    return;
+                }
             }
                
             var list = data.getAll('files');

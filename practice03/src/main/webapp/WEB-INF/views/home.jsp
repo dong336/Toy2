@@ -31,6 +31,7 @@
        <div id="navbar" class="collapse navbar-collapse">
 	       <ul class="nav navbar-nav">
 	         <li class="home"><a>Home</a></li>
+	         <li class="board"><a>My board</a></li>
 	         <li class="drive"><a>My drive</a></li>
 	         <li class="mp"><a>Music player</a></li>
 	         <li class="canvas"><a>Paint canvas</a></li>
