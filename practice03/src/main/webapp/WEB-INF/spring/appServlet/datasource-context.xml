@@ -14,7 +14,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
 	<tx:annotation-driven/>
-	<mybatis-spring:scan base-package="com.study.dao"/>
+<!-- 	<mybatis-spring:scan base-package="com.study.dao"/> -->
 	
 	<beans:bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 	
@@ -36,8 +36,13 @@
 		<beans:property name="mapperLocations" value="classpath:mybatis/sqlmap/oracle/*.xml"/>
 	</beans:bean>
 	
+	
 	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</beans:bean>
 
+<!-- 	<beans:bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<beans:property name="basePackage" value="com.study.dao" />
+		<beans:property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</beans:bean> -->
 </beans:beans>

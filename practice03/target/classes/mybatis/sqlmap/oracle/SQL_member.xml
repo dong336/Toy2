@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 
-	<resultMap type="MemberVO" id="resultMember">
+	<resultMap type="memberVO" id="resultMember">
 		<result property="id" column="id"/>
 		<result property="pwd" column="pwd"/>
 		<result property="name" column="name"/>
@@ -17,5 +17,10 @@
     	FROM t_member
     	ORDER BY joindate DESC
     </select>
-
+	
+	<select id="loginById"  resultType="memberVO"   parameterType="memberVO" >
+		SELECT * 
+		FROM t_member	
+		WHERE id=#{id} AND pwd=#{pwd}
+	</select>
 </mapper>

@@ -31,14 +31,11 @@
 <div class="row placeholders">
 	<div id="downloadzone"></div>
 </div>
-<div class="row placeholders">
+<div class="row placeho>lders">
 	<div id="grid">
 	</div>
 	<hr>	
-	<div>
-	    <button id="btnClear">clear</button>
-	    <button id="btnSearch">view</button>
-	</div>
+	
 </div>
 
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>

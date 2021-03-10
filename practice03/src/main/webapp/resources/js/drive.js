@@ -6,8 +6,7 @@ $(function () {
 	$('#modalBtn__1').on('click', function () {
         $('#modal__1').focus()
     });
-	
-	var gridData = [];
+
 	var grid = new tui.Grid({
 		el: document.getElementById('grid'),
 	    scrollX: false,
@@ -34,7 +33,7 @@ $(function () {
 	        name: 'capacity',
 		    width: 150,
 			align: 'right'
-	      }	        
+	      }
 	    ]
 	});
 	

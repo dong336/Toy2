@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,7 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
-     <div class="container-fluid">
+	<div class="container-fluid">
        <div class="navbar-header">
          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
            <span class="sr-only">Toggle navigation</span>
@@ -26,7 +28,16 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="#">Things</a>
+         <a class="navbar-brand" href="#">
+         <c:choose>
+         	<c:when test="${isLogOn == true && member!= null}">
+         		${member.id}
+         	</c:when>
+         	<c:otherwise>
+         		Things         
+         	</c:otherwise>
+         </c:choose>
+         </a>
        </div>
        <div id="navbar" class="collapse navbar-collapse">
 	       <ul class="nav navbar-nav">
@@ -36,16 +47,25 @@
 	         <li class="mp"><a>Music player</a></li>
 	         <li class="canvas"><a>Paint canvas</a></li>
 	       </ul>
-	       <form class="navbar-form navbar-right" method="get" action="/login/form">
-		       <button type="submit" class="btn btn-primary">Login</button>
-           </form>
+	       <c:choose>
+		       <c:when test="${isLogOn == true && member!= null}">
+		           <form class="navbar-form navbar-right" method="get" action="/login/logout">
+				       <button type="submit" class="btn btn-warning">Logout</button>
+		           </form>				
+		       </c:when>
+		       <c:otherwise>
+			       <form class="navbar-form navbar-right" method="get" action="/login/form">
+				       <button type="submit" class="btn btn-success">Login</button>
+		           </form>
+		       </c:otherwise>
+	       </c:choose>
        </div><!--/.nav-collapse -->
   	</div>
 </nav>
 
 <div class="container-fluid">
 	<div class="row placeholder">
-		<div class="col-sm-3 col-md-2 sidebar">
+		<!-- <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Item1<span class="sr-only">(current)</span></a></li>
             <li><a href="#">Item2</a></li>
@@ -99,10 +119,10 @@
             <li><a href="">Content2</a></li>
             <li><a href="">Content3</a></li>
           </ul>
-        </div>
+        </div> -->
 	
 	    <div id="body__container" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	    	<!-- main content ajax load -->  
+	    	<!-- main content ajax load -->
 	    </div>
 	    
 	</div>	
@@ -114,8 +134,8 @@
 				<p>&copy; <a href="http://www.github.com/dong336">www.github.com/dong336</a></p>
 			</footer>
 		</div>
-	</div>	
-</div>	
+	</div>
+</div>
 
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -123,4 +143,4 @@
 <script src="/resources/js/main.js"></script>
 
 </body>
-</html> 
+</html>

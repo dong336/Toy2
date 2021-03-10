@@ -16,9 +16,13 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	public List<MemberVO> getAllMemberList(){
+	public List<MemberVO> getAllMemberList() throws Exception{
 		List<MemberVO> memberList = memberDAO.selectAllMemberList();
 		
 		return memberList;
+	}
+	
+	public MemberVO login(MemberVO memberVO) throws Exception{
+		return memberDAO.loginById(memberVO);
 	}
 }
