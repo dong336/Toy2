@@ -25,8 +25,10 @@ public class DownloadView extends AbstractView{
     protected void renderMergedOutputModel(Map<String, Object> model,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        Map map = (HashMap) model.get("downloadFile");
-        File file = (File) map.get("model");
+    	
+    	Map map = (HashMap) model.get("downloadFile");
+    	File file = (File) map.get("model");
+    	
 
         response.setContentType(getContentType());
         response.setContentLength((int) file.length());

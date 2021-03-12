@@ -1,8 +1,9 @@
 $(function(){
 	var grid = new tui.Grid({
 		el: document.getElementById('grid'),
+		rowHeaders: ['checkbox'],
 	    scrollX: false,
-	    scrollY: false,
+	    scrollY: true,
 	    columns: [
 			{
 			header: 'id',

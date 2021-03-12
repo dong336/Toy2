@@ -23,7 +23,7 @@ public class HomeController {
 	
 	@GetMapping("board")
 	public String getBoard() {
-		return "navbar/boardList";
+		return "navbar/mainBoard";
 	}
 	
 	@GetMapping("drive")

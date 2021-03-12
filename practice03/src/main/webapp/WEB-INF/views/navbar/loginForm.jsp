@@ -17,15 +17,15 @@
   </head>
 
   <body>
-
+	
     <div class="container">
 
-      <form class="form-signin" action="/member" method="post">
+      <form class="form-signin" action="/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="id" class="sr-only">Id</label>
-        <input type="text" name="id" id="id" class="form-control" placeholder="Id" required autofocus>
+        <input type="text" name="id" class="form-control" placeholder="Id" required autofocus>
         <label for="pwd" class="sr-only">Password</label>
-        <input type="password" name="pwd" id="pwd" class="form-control" placeholder="Password" required>
+        <input type="password" name="pwd" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me

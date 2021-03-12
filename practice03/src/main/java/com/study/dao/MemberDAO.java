@@ -1,6 +1,7 @@
 package com.study.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.annotation.MapperScan;
@@ -19,6 +20,12 @@ public class MemberDAO {
 		List<MemberVO> list = sqlSession.selectList("member.selectAllMemberList");
 		
 		return list;
+	}
+	
+	public int insertMember(MemberVO memberVO) {
+		int result = sqlSession.insert("member.insertMember", memberVO);
+		
+		return result;	
 	}
 	
 	public MemberVO loginById(MemberVO memberVO) throws DataAccessException{

@@ -31,7 +31,7 @@
          <a class="navbar-brand" href="#">
          <c:choose>
          	<c:when test="${isLogOn == true && member!= null}">
-         		${member.id}
+         		${member.id}님
          	</c:when>
          	<c:otherwise>
          		Things         
@@ -51,11 +51,14 @@
 		       <c:when test="${isLogOn == true && member!= null}">
 		           <form class="navbar-form navbar-right" method="get" action="/login/logout">
 				       <button type="submit" class="btn btn-warning">Logout</button>
-		           </form>				
+		           </form>
 		       </c:when>
 		       <c:otherwise>
 			       <form class="navbar-form navbar-right" method="get" action="/login/form">
 				       <button type="submit" class="btn btn-success">Login</button>
+		           </form>
+		       	   <form class="navbar-form navbar-right" method="get" action="/member/form">
+				       <button type="submit" class="btn btn-primary">회원가입</button>
 		           </form>
 		       </c:otherwise>
 	       </c:choose>
