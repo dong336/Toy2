@@ -12,25 +12,20 @@
 		<result property="joinDate" column="joinDate"/>
 	</resultMap>
 
-	<select id="selectAllMemberList" resultMap="resultMember">
-    	SELECT * 
+	<select id="selectAllMemberList" resultType="hashmap">
+    	SELECT id, pwd, name, email
     	FROM t_member
     	ORDER BY joindate DESC
     </select>
 	
-	<select id="loginById"  resultType="memberVO"   parameterType="memberVO" >
+	<select id="loginById"  resultType="hashmap"   parameterType="hashmap" >
 		SELECT * 
 		FROM t_member	
 		WHERE id=#{id} AND pwd=#{pwd}
 	</select>
 	
-	<insert id="insertMember"  parameterType="memberVO">
+	<insert id="insertMember"  parameterType="hashmap">
 		INSERT INTO t_member(id, pwd, name, email)
 		VALUES(#{id}, #{pwd}, #{name}, #{email})
 	</insert>
-	
-	<delete id="deleteMember"  parameterType="String">
-		DELETE FROM t_member
-		WHERE id=#{id}
-	</delete>
 </mapper>

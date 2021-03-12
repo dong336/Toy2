@@ -1,6 +1,7 @@
 package com.study.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -15,18 +16,36 @@ import com.study.vo.MemberVO;
 public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
+	@Autowired
+	private MemberVO memberVO;
 	
-	public List<MemberVO> getAllMemberList() throws DataAccessException{
-		List<MemberVO> memberList = memberDAO.selectAllMemberList();
+	public List<Map<String, Object>> getAllMemberList() throws DataAccessException{
+		List<Map<String, Object>> memberList = memberDAO.selectList("member.selectAllMemberList", null);
 		
 		return memberList;
 	}
 	
-	public MemberVO login(MemberVO memberVO) throws DataAccessException{
-		return memberDAO.loginById(memberVO);
+	public MemberVO login(Map<String, Object> map) throws DataAccessException{
+		Map<String, Object> member = memberDAO.selectOne("member.loginById", map);
+		System.out.println(member.toString());
+		
+		String id = (String)member.get("ID");
+		String pwd = (String)member.get("PWD");
+		
+		System.out.println(id);
+		System.out.println(pwd);
+		
+		memberVO.setId(id);
+		memberVO.setPwd(pwd);
+		
+		System.out.println(memberVO.toString());
+		
+		return memberVO;
 	}
 	
-	public int addMember(MemberVO memberVO) throws DataAccessException{
-		return memberDAO.insertMember(memberVO);
+	public int addMember(Map<String, Object> param) throws DataAccessException{
+		
+		
+		return memberDAO.insert("insertMember", param);
 	}
 }

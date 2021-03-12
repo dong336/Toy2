@@ -1,5 +1,7 @@
 package com.study.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.study.service.MemberService;
 import com.study.vo.MemberVO;
@@ -32,12 +36,12 @@ public class MemberController {
 	}
 	
 	@PostMapping("addMember")
-	public String addMember(@ModelAttribute MemberVO member, HttpServletRequest request, HttpServletResponse response) {
+	public String addMember(@RequestParam Map<String, Object> map, HttpServletRequest request, HttpServletResponse response) {
 		log.info("==addMember==");
-		log.info(member.toString());
+		log.info(map.toString());
 		
-		memberService.addMember(member);
-		memberVO = memberService.login(member);
+		memberService.addMember(map);
+		memberVO = memberService.login(map);
 		
 		if(memberVO == null) {
 			log.info("** login fail");

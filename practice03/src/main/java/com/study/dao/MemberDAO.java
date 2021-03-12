@@ -4,33 +4,41 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
-
-import com.study.vo.MemberVO;
 
 @Repository
 public class MemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<MemberVO> selectAllMemberList() throws DataAccessException{
-		List<MemberVO> list = sqlSession.selectList("member.selectAllMemberList");
+	public Map<String, Object> selectOne(String statement, Map<String, Object> condition){
 		
-		return list;
+		return sqlSession.selectOne(statement, condition);
 	}
 	
-	public int insertMember(MemberVO memberVO) {
-		int result = sqlSession.insert("member.insertMember", memberVO);
+	public int selectInt(String statement, Map<String, Object> condition){
 		
-		return result;	
+		return sqlSession.selectOne(statement, condition);
 	}
 	
-	public MemberVO loginById(MemberVO memberVO) throws DataAccessException{
-		MemberVO vo = sqlSession.selectOne("member.loginById", memberVO);
+	public String selectStr(String statement, Map<String, Object> condition){
 		
-		return vo;
+		return sqlSession.selectOne(statement, condition);
+	}
+	
+	public List<Map<String, Object>> selectList(String statement, Map<String, Object> condition){
+		
+		return sqlSession.selectList(statement, condition);
+	}
+	
+	public int insert(String statement, Map<String, Object> condition){
+		
+		return sqlSession.update(statement, condition);
+	}
+	
+	public int delete(String statement, Map<String, Object> condition){
+		
+		return sqlSession.delete(statement, condition);
 	}
 }

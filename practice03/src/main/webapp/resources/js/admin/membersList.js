@@ -7,23 +7,19 @@ $(function(){
 	    columns: [
 			{
 			header: 'id',
-			name: 'id'
+			name: 'ID'
 			},
 			{
 			header: 'pwd',
-			name: 'pwd'
+			name: 'PWD'
 			},
 			{
 			header: 'name',
-			name: 'name'
+			name: 'NAME'
 			},
 			{
 			header: 'email',
-			name: 'email'
-			},
-			{
-			header: 'joinDate',
-			name: 'joinDate'
+			name: 'EMAIL'
 			}
 	    ]
 	});

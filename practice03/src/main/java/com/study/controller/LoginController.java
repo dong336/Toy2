@@ -1,5 +1,7 @@
 package com.study.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,9 +9,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.study.service.MemberService;
@@ -27,11 +29,11 @@ public class LoginController {
 	MemberService memberService;
 	
 	@PostMapping("")
-	private String login(@ModelAttribute MemberVO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private String login(@RequestParam Map<String, Object> map, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		log.info("==RecieveForm==");
-		log.info(member.toString());
+		log.info(map.toString());
 		
-		memberVO = memberService.login(member);
+		memberVO = memberService.login(map);
 
 		// TODO : 03.10 login validate, admin mode
 		if(memberVO != null) {
@@ -47,7 +49,7 @@ public class LoginController {
 		    String action = (String)session.getAttribute("action");
 		    session.removeAttribute("action");
 		    
-		    log.info("** 세션 속성을 입력 : member(" + member + "), isLogOn (" + true + ")");
+		    log.info("** 세션 속성을 입력 : member(" + map.toString() + "), isLogOn (" + true + ")");
 		    log.info("** login success");
 		    
 		    if(action!= null) {
