@@ -8,9 +8,9 @@
 <body>
 <h1 class="page-header">글 목록</h1>
 <div class="row placeholders">
-	<div class="box__1">
-		<h1>미구현</h1>
-	</div>
+	<p>
+	자유게시판
+	</p>
 </div>
 </body>
 </html>

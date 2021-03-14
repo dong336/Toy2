@@ -132,6 +132,7 @@
         </div> -->
 	
 	    <div id="body__container" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	    	<h1 class="page-header">자유게시판</h1>
 	    	<!-- main content ajax load -->
 	    </div>
 	    
@@ -151,10 +152,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- Custom js -->
 <script src="/resources/js/main.js"></script>
-<script type="text/javascript">
-$("#body__container").load("main");
-$(".home a").css({"color":"white"});
-</script>
 
 </body>
 </html>

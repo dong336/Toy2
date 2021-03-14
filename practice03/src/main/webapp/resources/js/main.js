@@ -1,9 +1,6 @@
 window.onload = function(){
 	
 	/* 반응형 nav panel */
-	$("#body__container").load("main");
-	$(".home").css({"background-color":"darkorchid"});
-	$(".home a").css({"color":"white"});
 	
 	$(".home").on("click", function(){
 		$("#body__container").empty();
@@ -12,9 +9,10 @@ window.onload = function(){
   });
 
 	$(".board").on("click", function(){
-		$("#body__container").empty();
-		$("#body__container").load("board");
+		// $("#body__container").empty();
+		// $("#body__container").load("board");
 		pushed(".board");
+		$("#menu1 li a").css({"color":"black"});
 	});
 
 	$(".drive").on("click", function(){
@@ -38,7 +36,6 @@ window.onload = function(){
   function pushed(panel){
 		$(".home, .board, .drive, .mp, .canvas").css({"background-color":"#101010"});
 		$(".home a, .board a, .drive a, .mp a, .canvas a").css({"color":"#9d9d9d"});
-		$(panel).css({"background-color":"darkorchid"});
 		$(panel + " a").css({"color":"white"});
 	};
 };

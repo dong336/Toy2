@@ -15,7 +15,9 @@
 
 <div id="grid">
 </div>
-	
+<hr>
+<button id="removeRow" type="button">회원삭제</button>
+
 </body>
 
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
