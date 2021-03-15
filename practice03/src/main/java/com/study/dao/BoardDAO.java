@@ -1,5 +1,5 @@
 package com.study.dao;
 
-public class MemberDAO {
+public class BoardDAO {
 
 }

@@ -2,6 +2,16 @@ window.onload = function(){
 	
 	/* 반응형 nav panel */
 	
+	$("#menu1 #freeBoard").on("click", function(){
+		$("#body__container").empty();
+		$("#body__container").load("freeBoard");
+	});
+
+	$("#menu1 #QnABoard").on("click", function(){
+		$("#body__container").empty();
+		$("#body__container").load("QnABoard");
+	});
+
 	$(".home").on("click", function(){
 		$("#body__container").empty();
 		$("#body__container").load("main");

@@ -45,9 +45,9 @@
 	         <li class="board dropdown">
 	         	<a id="dropBoard" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="true">My board</a>
 	         	<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="dropBoard">
-		          <li role="presentation"><a role="menuitem" href="freeBoard">자유게시판</a></li>
-		          <li role="presentation"><a role="menuitem" href="QnABoard">질문게시판</a></li>
-		          <li role="presentation"><a role="menuitem" href="#">기타</a></li>
+		          <li id="freeBoard" role="presentation"><a role="menuitem">자유게시판</a></li>
+		          <li id="QnABoard" role="presentation"><a role="menuitem">질문게시판</a></li>
+		          <li role="presentation"><a role="menuitem">기타</a></li>
 		        </ul>
 	         </li>
 	         <li class="drive"><a>My drive</a></li>

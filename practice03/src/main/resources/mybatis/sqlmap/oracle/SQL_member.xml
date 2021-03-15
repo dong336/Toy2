@@ -14,23 +14,23 @@
 
 	<select id="selectAllMemberList" resultType="hashmap">
     	SELECT id, pwd, name, email, TO_CHAR(joinDate, 'YYYY.MM.DD') AS joinDate
-    	FROM t_member
+    	FROM member
     	ORDER BY joindate DESC
     </select>
 	
 	<select id="loginById"  resultType="hashmap" parameterType="hashmap" >
 		SELECT * 
-		FROM t_member	
+		FROM member	
 		WHERE id=#{id} AND pwd=#{pwd}
 	</select>
 	
 	<insert id="insertMember"  parameterType="hashmap">
-		INSERT INTO t_member(id, pwd, name, email)
+		INSERT INTO member(id, pwd, name, email)
 		VALUES(#{id}, #{pwd}, #{name}, #{email})
 	</insert>
 	
 	<delete id="deleteMember"  parameterType="hashmap">
-		DELETE FROM t_member
+		DELETE FROM member
 		WHERE id=#{id}
 	</delete>
 </mapper>

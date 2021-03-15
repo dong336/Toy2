@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.study.dao.MemberDAO;
+import com.study.dao.CommonDAO;
 import com.study.service.MemberService;
 
 @Controller
@@ -23,7 +23,7 @@ public class AdminController {
 	@Autowired
 	MemberService memberService;
 	@Autowired
-	MemberDAO memberDAO;
+	CommonDAO commonDAO;
 	
 	@ResponseBody
 	@PostMapping("removeMember")

@@ -16,3 +16,6 @@ body {
 footer{
 	font-family: 'Times New Roman', Times, serif;
 }
+#menu1 li:hover{
+	cursor: pointer;
+}

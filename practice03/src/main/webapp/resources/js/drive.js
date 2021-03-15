@@ -77,10 +77,10 @@ $(function () {
         var td4 = grid.getElement(e.rowKey, 'capacity');
         
         if(td1 != null){
-            td1.style.backgroundColor = 'darkorchid';
-            td2.style.backgroundColor = 'darkorchid';
-            td3.style.backgroundColor = 'darkorchid';
-            td4.style.backgroundColor = 'darkorchid';
+            td1.style.backgroundColor = 'dimgray';
+            td2.style.backgroundColor = 'dimgray';
+            td3.style.backgroundColor = 'dimgray';
+            td4.style.backgroundColor = 'dimgray';
             
             td1.style.color = 'white';
             td2.style.color = 'white';

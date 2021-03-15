@@ -9,14 +9,13 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.study.dao.MemberDAO;
+import com.study.dao.CommonDAO;
 import com.study.vo.MemberVO;
 
 @Service
-@Transactional
 public class MemberService {
 	@Autowired
-	private MemberDAO memberDAO;
+	private CommonDAO commonDAO;
 	@Autowired
 	private MemberVO memberVO;
 	
@@ -30,7 +29,7 @@ public class MemberService {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("id", list.get(i));
 			
-			memberDAO.delete("member.deleteMember", map);
+			commonDAO.delete("member.deleteMember", map);
 			result++;
 		}
 		
@@ -39,14 +38,14 @@ public class MemberService {
 	
 	@Transactional
 	public List<Map<String, Object>> getAllMemberList() throws DataAccessException{
-		List<Map<String, Object>> memberList = memberDAO.selectList("member.selectAllMemberList", null);
+		List<Map<String, Object>> memberList = commonDAO.selectList("member.selectAllMemberList", null);
 		
 		return memberList;
 	}
 	
 	@Transactional
 	public MemberVO login(Map<String, Object> map) throws DataAccessException{
-		Map<String, Object> member = memberDAO.selectOne("member.loginById", map);
+		Map<String, Object> member = commonDAO.selectOne("member.loginById", map);
 		System.out.println(member.toString());
 		
 		String id = (String)member.get("ID");
@@ -66,6 +65,6 @@ public class MemberService {
 	@Transactional
 	public int addMember(Map<String, Object> param) throws DataAccessException{
 		
-		return memberDAO.insert("insertMember", param);
+		return commonDAO.insert("insertMember", param);
 	}
 }
