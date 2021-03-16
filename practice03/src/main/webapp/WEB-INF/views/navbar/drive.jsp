@@ -1,15 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-
-<link rel="stylesheet" href="/resources/css/main.css">
 <link rel="stylesheet" href="/resources/css/drive.css">
 <link rel="stylesheet" href="/resources/node_modules/tui-grid/dist/tui-grid.css">
 
-</head>
-<body>
 <h1 class="page-header">My drive</h1>
 <div class="row placeholders">
     <button id="modalBtn__1" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">File upload</button>
@@ -38,11 +31,7 @@
 	
 </div>
 
-<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <script src="/resources/node_modules/tui-grid/dist/tui-grid.js"></script>
 <script src="/resources/node_modules/tui-grid/dist/tui-grid.min.js"></script>
 
 <script src="/resources/js/drive.js"></script>
-
-</body>
-</html> 

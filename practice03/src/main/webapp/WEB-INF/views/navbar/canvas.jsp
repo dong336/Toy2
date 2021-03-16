@@ -1,15 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="/resources/css/canvas.css">  
-    <link rel="stylesheet" href="/resources/css/main.css">
-</head>
-<body>
+<link rel="stylesheet" href="/resources/css/canvas.css">  
+
 <h1 class="page-header">Canvas</h1>
 <div class="row placeholders">
     <canvas id="jsCanvas" class="canvas__canvas"></canvas>
@@ -36,5 +26,3 @@
 </div>
     
 <script src="/resources/js/canvas.js"></script>
-</body>
-</html>

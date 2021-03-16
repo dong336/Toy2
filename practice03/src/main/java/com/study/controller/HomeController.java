@@ -2,27 +2,13 @@ package com.study.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
 @Controller
 public class HomeController {
-	
-	
-	
-	
-	@GetMapping("favicon.ico")
-	public String getFavicon() {
-		return null;
-	}
 	
 	@GetMapping("/")
 	public String getHome() {
 		System.out.println("==Home==");
 		return "home";
-	}
-	
-	@GetMapping("main")
-	public String getMain() {
-		return "navbar/main";
 	}
 	
 	@GetMapping("board")

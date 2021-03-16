@@ -3,16 +3,9 @@ window.onload = function(){
 	/* 반응형 nav panel */
 	$(".home").on("click", function(){
 		$("#body__container").empty();
-		$("#body__container").load("main");
+		location.href = "/";
     	pushed(".home");
   	});
-
-	$(".board").on("click", function(){
-		// $("#body__container").empty();
-		// $("#body__container").load("board");
-		pushed(".board");
-		$("#menu1 li a").css({"color":"black"});
-	});
 
 	$(".drive").on("click", function(){
 		$("#body__container").empty();
