@@ -11,6 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 public class ArticleVO {
+	int articleNo;
 	String title;
 	String id;
 	String content;

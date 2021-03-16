@@ -1,26 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>자유게시판</title>
-<link rel="stylesheet" href="/resources/node_modules/tui-grid/dist/tui-grid.css">
-<link rel="stylesheet" href="/resources/node_modules/tui-pagination/dist/tui-pagination.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home</title>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"> -->
 
 <!-- Custome CSS -->
 <link rel="stylesheet" href="/resources/css/dashboard.css">
 <link rel="stylesheet" href="/resources/css/content.css">
-
-<style>
-.tui-grid-table tbody tr td:hover{
-    cursor: pointer;
-}
+<style type="text/css">
 </style>
-
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -71,7 +68,7 @@
 
 <div class="container-fluid">
 	<div class="row placeholder">
-		<div id="accordion" class="col-sm-3 col-md-2 sidebar">
+		<div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li role="presentation" class="dropdown">
 			  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
@@ -89,15 +86,16 @@
 	
 	    <div id="body__container" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	    	<!-- main content ajax load -->
-			<div class="page-header">
-				<h1>자유게시판</h1>
-			</div>
-			<div class="row placeholders">
-				<div id="frame">
-					<div id="grid"></div><br>
-					<button type="button" class="btn btn-primary" id="writing">글쓰기</button>
-				</div>
-			</div>
+	    	<div class="page-header">
+		    	<h1>
+		    		${article.TITLE} &nbsp; 
+		    		<small>${article.ID}</small> &nbsp;
+   		 			<small>${article.WRITEDATE}</small>
+		    	</h1>
+		    </div>
+	    	<div class="row placeholders">
+	    		<p class="text-left">${article.CONTENT }</p>
+	    	</div>
 	    </div>
 	    
 	</div>	
@@ -114,114 +112,9 @@
 
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="/resources/node_modules/tui-grid/dist/tui-grid.js"></script>
-<script src="/resources/node_modules/tui-grid/dist/tui-grid.min.js"></script>
-<script src="/resources/node_modules/tui-pagination/dist/tui-pagination.js"></script>
 <!-- Custom js -->
 <script src="/resources/js/main.js"></script>
-
 <script type="text/javascript">
-$(function(){
-	// ** definition
-	
-	$("#writing").on('click', function(){
-		$("#frame").empty();
-	});
-	
-	const grid = new tui.Grid({
-	  el: document.getElementById('grid'),
-	  columns: [
-	    {
-	      header: '제목',
-	      name: 'TITLE',
-	      width: 150
-	    },
-	    {
-	      header: '작성자',
-	      name: 'ID',
-	      width: 150
-	    },
-	    {
-	      header: '내용',
-	      name: 'CONTENT'
-	    },
-	    {
-	      header: '작성 날짜',
-	      name: 'WRITEDATE',
-	      width: 150
-	    }
-	  ],
-	  rowHeaders: ['rowNum'],
-/*  	  pageOptions: {
-	    perPage: 5
-	  } */  
-	}); 
-
-	grid.on('mouseover', function(e){
-        var td1 = grid.getElement(e.rowKey, 'TITLE');
-        var td2 = grid.getElement(e.rowKey, 'ID');
-        var td3 = grid.getElement(e.rowKey, 'CONTENT');
-        var td4 = grid.getElement(e.rowKey, 'WRITEDATE');
-        
-        if(td1 != null){
-            td1.style.backgroundColor = 'dimgray';
-            td2.style.backgroundColor = 'dimgray';
-            td3.style.backgroundColor = 'dimgray';
-            td4.style.backgroundColor = 'dimgray';
-            
-            td1.style.color = 'white';
-            td2.style.color = 'white';
-            td3.style.color = 'white';
-            td4.style.color = 'white';
-        }
-    });
-	
-    grid.on('mouseout', function(e){
-        var td1 = grid.getElement(e.rowKey, 'TITLE');
-        var td2 = grid.getElement(e.rowKey, 'ID');
-        var td3 = grid.getElement(e.rowKey, 'CONTENT');
-        var td4 = grid.getElement(e.rowKey, 'WRITEDATE');
-        
-        if(td1 != null){
-            td1.style.backgroundColor = '#f4f4f4';
-            td2.style.backgroundColor = '#f4f4f4';
-            td3.style.backgroundColor = '#f4f4f4';
-            td4.style.backgroundColor = '#f4f4f4';
-            
-            td1.style.color = 'black';
-            td2.style.color = 'black';
-            td3.style.color = 'black';
-            td4.style.color = 'black';
-        }
-    });
-	
-	grid.on('click', function(e){
-		const article = grid.getRow(e.rowKey);
-		const id = article.ID;
-		const articleNo = article.ARTICLENO;
-		console.log(article);
-		
-		console.log("/freeBoard/getArticle?id=" + id + "&articleNo=" + articleNo);
-		
-		location.href = "/freeBoard/getArticle?id=" + id + "&articleNo=" + articleNo;
-	});
-	
-	// ** thread
-	$.ajax({
-		url : '/freeBoard/getBoardList', 
-		method : 'get',
-		data : null,
-		dataType : 'JSON',
-		error : function(){
-			alert('error');
-		},
-		success : function(result){
-			//console.dir(result);
-			grid.resetData(eval(result));
-		}
-	});
-});
-
 </script>
 
 </body>

@@ -42,14 +42,6 @@
        <div id="navbar" class="collapse navbar-collapse">
 	       <ul class="nav navbar-nav">
 	         <li class="home"><a>Home</a></li>
-	         <li class="board dropdown">
-	         	<a id="dropBoard" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="true">My board</a>
-	         	<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="dropBoard">
-		          <li id="freeBoard" role="presentation"><a role="menuitem">자유게시판</a></li>
-		          <li id="QnABoard" role="presentation"><a role="menuitem">질문게시판</a></li>
-		          <li role="presentation"><a role="menuitem">기타</a></li>
-		        </ul>
-	         </li>
 	         <li class="drive"><a>My drive</a></li>
 	         <li class="mp"><a>Music player</a></li>
 	         <li class="canvas"><a>Paint canvas</a></li>
@@ -75,61 +67,21 @@
 
 <div class="container-fluid">
 	<div class="row placeholder">
-		<!-- <div class="col-sm-3 col-md-2 sidebar">
+		<div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Item1<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Item2</a></li>
-            <li><a href="#">Item3</a></li>
-            <li><a href="#">Item4</a></li>
+            <li role="presentation" class="dropdown">
+			  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+			    게시판 목록<span class="caret"></span>
+			  </a>
+			  <ul class="dropdown-menu" role="menu">
+			    <li id="freeBoard" role="presentation"><a href="/freeBoard" role="menuitem">자유게시판</a></li>
+		        <li id="QnABoard" role="presentation"><a href="/QnABoard" role="menuitem">질문게시판</a></li>  	  
+			  </ul>
+			</li>
+            <li class="active"><a href="#">.. 목록<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="#">.. 목록<span class="sr-only">(current)</span></a></li>
           </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Board1</a></li>
-            <li><a href="">Board2</a></li>
-            <li><a href="">Board3</a></li>
-            <li><a href="">Board4</a></li>
-            <li><a href="">Board5</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Board1</a></li>
-            <li><a href="">Board2</a></li>
-            <li><a href="">Board3</a></li>
-            <li><a href="">Board4</a></li>
-            <li><a href="">Board5</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Board1</a></li>
-            <li><a href="">Board2</a></li>
-            <li><a href="">Board3</a></li>
-            <li><a href="">Board4</a></li>
-            <li><a href="">Board5</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Board1</a></li>
-            <li><a href="">Board2</a></li>
-            <li><a href="">Board3</a></li>
-            <li><a href="">Board4</a></li>
-            <li><a href="">Board5</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Board1</a></li>
-            <li><a href="">Board2</a></li>
-            <li><a href="">Board3</a></li>
-            <li><a href="">Board4</a></li>
-            <li><a href="">Board5</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Board1</a></li>
-            <li><a href="">Board2</a></li>
-            <li><a href="">Board3</a></li>
-            <li><a href="">Board4</a></li>
-            <li><a href="">Board5</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Content1</a></li>
-            <li><a href="">Content2</a></li>
-            <li><a href="">Content3</a></li>
-          </ul>
-        </div> -->
+        </div> 
 	
 	    <div id="body__container" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	    	<!-- main content ajax load -->

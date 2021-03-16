@@ -5,11 +5,24 @@
 <mapper namespace="free_board">
 	<select id="selectAllArticleList" resultType="hashmap">
     	SELECT 
+    		articleno,
     		title, 
     		id, 
     		SUBSTR(content, 1, 10) as content, 
     		TO_CHAR(writedate, 'YYYY.MM.DD') AS writedate
     	FROM free_board
     	ORDER BY writedate DESC
+    </select>
+    
+    <select id="selectArticle" parameterType="hashmap" resultType="hashmap">
+    	SELECT
+    		parentno,
+    		articleno,
+    		title, 
+    		id, 
+    		SUBSTR(content, 1, 10) as content, 
+    		TO_CHAR(writedate, 'YYYY.MM.DD') AS writedate 
+		FROM free_board 
+		WHERE id=#{id} AND articleNo=#{articleNo}
     </select>
 </mapper>

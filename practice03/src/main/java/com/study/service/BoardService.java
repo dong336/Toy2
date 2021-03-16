@@ -15,10 +15,17 @@ public class BoardService {
 	CommonDAO commonDAO;
 	
 	@Transactional
-	public List<Map<String, Object>> getAllArticleList(){
+	public List<Map<String, Object>> getAllFreeBoardArticleList(){
 		List<Map<String, Object>> articleList = commonDAO.selectList("free_board.selectAllArticleList", null);
+			
+		return articleList;
+	}
+	
+	@Transactional
+	public Map<String, Object> getFreeBoardArticle(Map<String, Object> map){
+		Map<String, Object> article = commonDAO.selectOne("free_board.selectArticle", map);
 		System.out.println("** success dao");
 		
-		return articleList;
+		return article;
 	}
 }

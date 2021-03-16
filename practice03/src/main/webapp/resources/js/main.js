@@ -1,22 +1,11 @@
 window.onload = function(){
 	
 	/* 반응형 nav panel */
-	
-	$("#menu1 #freeBoard").on("click", function(){
-		$("#body__container").empty();
-		$("#body__container").load("freeBoard");
-	});
-
-	$("#menu1 #QnABoard").on("click", function(){
-		$("#body__container").empty();
-		$("#body__container").load("QnABoard");
-	});
-
 	$(".home").on("click", function(){
 		$("#body__container").empty();
 		$("#body__container").load("main");
     	pushed(".home");
-  });
+  	});
 
 	$(".board").on("click", function(){
 		// $("#body__container").empty();
@@ -29,19 +18,19 @@ window.onload = function(){
 		$("#body__container").empty();
 		$("#body__container").load("drive");
     	pushed(".drive");
-  });
+  	});
 	
 	$(".mp").on("click", function(){
 		$("#body__container").empty();
 		$("#body__container").load("mp");
     	pushed(".mp");
-  });
+  	});
 	
 	$(".canvas").on("click", function(){
 		$("#body__container").empty();
 		$("#body__container").load("canvas");
     	pushed(".canvas");
-  });
+  	});
 
   function pushed(panel){
 		$(".home, .board, .drive, .mp, .canvas").css({"background-color":"#101010"});
