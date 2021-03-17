@@ -8,7 +8,7 @@
     		articleno,
     		title, 
     		id, 
-    		SUBSTR(content, 1, 10) as content, 
+    		SUBSTR(content, 1, 100) as content, 
     		TO_CHAR(writedate, 'YYYY.MM.DD') AS writedate
     	FROM free_board
     	ORDER BY writedate DESC
@@ -20,9 +20,33 @@
     		articleno,
     		title, 
     		id, 
-    		SUBSTR(content, 1, 10) as content, 
+    		content, 
     		TO_CHAR(writedate, 'YYYY.MM.DD') AS writedate 
 		FROM free_board 
 		WHERE id=#{id} AND articleNo=#{articleNo}
     </select>
+    
+    <insert id="insertNewArticle" parameterType="hashmap">
+		INSERT INTO free_board(
+			articleNo,  
+			title, 
+			content, 
+			imageFileName, 
+			id
+			)
+		VALUES(
+			#{articleNo}, 
+			#{title}, 
+			#{content}, 
+			#{imageFileName}, 
+			#{id}
+			)      
+	</insert>
+	
+	<select id="selectNewArticleNo" resultType="int">
+		<![CDATA[
+			SELECT NVL(MAX(articleNO), 0) + 1 
+			FROM free_board		
+		]]>
+	</select>
 </mapper>

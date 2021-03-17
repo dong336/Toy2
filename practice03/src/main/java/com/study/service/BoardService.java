@@ -7,12 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.study.dao.BoardDAO;
 import com.study.dao.CommonDAO;
 
 @Service
 public class BoardService {
 	@Autowired
 	CommonDAO commonDAO;
+	@Autowired
+	BoardDAO boardDAO;
+	
+	@Transactional
+	public int addNewArticleToFreeBoard(Map<String, Object> map) {
+		int articleNo = boardDAO.getNewArticleNoFromFreeBoard();
+		
+		map.put("articleNo", articleNo);
+		map.put("imageFileName", "");
+		
+		return commonDAO.insert("free_board.insertNewArticle", map);
+	}
 	
 	@Transactional
 	public List<Map<String, Object>> getAllFreeBoardArticleList(){
